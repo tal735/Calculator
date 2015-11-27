@@ -1,5 +1,4 @@
-#define OP_NODE 'o'
-#define NUM_NODE 'n'
+
 
 class Node{
 public:
