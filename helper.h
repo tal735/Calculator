@@ -26,10 +26,12 @@ void skip_whitespaces(string stmt, unsigned int* pos){
 			break;
 	}
 };
+
 double get_num(string stmt, unsigned int* pos, int* status){
 	unsigned int begin = *pos;
 	unsigned int end;
 	// find next number substring
+	cout << "*pos: " << *pos << " , stmt.at(*pos): " << stmt.at(*pos) << endl;
 	while(stmt.at(*pos)>='0' && stmt.at(*pos)<='9'){
 		*pos = *pos + 1;
 		if (end_of_string(pos, stmt))
@@ -44,7 +46,6 @@ double get_num(string stmt, unsigned int* pos, int* status){
 
 	double num = 0;
 	if(*pos==begin){ // nothing to convert
-		cout << "number was not found in input" << endl;
 		*status = ERROR;
 		return 0;
 	}
@@ -61,11 +62,11 @@ double get_num(string stmt, unsigned int* pos, int* status){
 
 	return num;
 };
+
 char get_op(string stmt, unsigned int* pos, int* status){
 	// if not end of string, we expect to find an operand
 	char op = stmt.at(*pos);
 	if(!is_op(op)){
-		cout << "get_op error" << endl;
 		*status = ERROR;
 		return 0;
 	}

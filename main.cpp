@@ -22,7 +22,7 @@ Node* build_tree(string stmt, int* status){
 
 	// get first num
 	num = get_num(stmt, &pos, status);
-	if(status==ERROR){
+	if(*status==ERROR){
 		cout << ERROR_READ_NUM << endl;
 		return 0;
 	}
@@ -34,7 +34,7 @@ Node* build_tree(string stmt, int* status){
 	}
 	// get op
 	op = get_op(stmt, &pos, status);
-	if(status==ERROR){
+	if(*status==ERROR){
 		cout << ERROR_READ_OP << endl;
 		return 0;
 	}
@@ -50,9 +50,9 @@ Node* build_tree(string stmt, int* status){
 	while(true){
 		// get num
 		num = get_num(stmt, &pos, status);
-		if(status==ERROR){
+		if(*status==ERROR){
 			cout << ERROR_READ_NUM << endl;
-			return 0;
+			break;
 		}
 
 		// deal with last number in input
@@ -68,9 +68,9 @@ Node* build_tree(string stmt, int* status){
 
 		// get op
 		op = get_op(stmt, &pos, status);
-		if(status==ERROR){
+		if(*status==ERROR){
 			cout << ERROR_READ_OP << endl;
-			return 0;
+			break;
 		}
 
 		// create temporary node to insert to tree
@@ -160,14 +160,14 @@ int main() {
 	// build tree of user input
 	root = build_tree(stmt, &status);
 	if(status==ERROR){
-		cout << "Your formula contains some errors. Terminating..." << endl;
+		cout << ERROR_INCORRENT_INPUT << endl;
 		goto end;
 	}
 
 	// run across tree by order and calculate result
 	result = calculate_result(root, &status);
 	if(status==ERROR){
-		cout << "Could not calculate result. Terminating..." << endl;
+		cout << ERROR_UNABLE_TO_CALC << endl;
 		goto end;
 	}
 	// print result
