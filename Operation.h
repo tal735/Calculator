@@ -1,3 +1,6 @@
+#ifndef OPERATION_H
+#define OPERATION_H
+
 class Operation{
 public:
 	virtual double Perform(double A, double B) = 0;
@@ -20,3 +23,5 @@ public:
  public:
 	double Perform(double A, double B)  {return A/B;}
  };
+
+#endif

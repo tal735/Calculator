@@ -1,5 +1,5 @@
-#define OP_NODE 'o'
-#define NUM_NODE 'n'
+#ifndef NODE_H
+#define NODE_H
 
 class Node{
 public:
@@ -12,3 +12,5 @@ public:
 	Node(){};
 
 };
+
+#endif
